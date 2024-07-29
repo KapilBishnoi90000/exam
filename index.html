@@ -1,0 +1,111 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to August 8th</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+		body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #9bff37, #ffa600);
+}
+
+.countdown-container {
+    text-align: center;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+}
+
+.time-section {
+    margin: 0 15px;
+    text-align: center;
+}
+
+.time {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.label {
+    display: block;
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', (event) => {
+    const countdown = () => {
+        const countDate = new Date('August 8, ' + (new Date().getFullYear() + (new Date().getMonth() > 7 || (new Date().getMonth() === 7 && new Date().getDate() > 8) ? 1 : 0)) + ' 8:45:00').getTime();
+        const now = new Date().getTime();
+        const gap = countDate - now;
+
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const days = Math.floor(gap / day);
+        const hours = Math.floor((gap % day) / hour);
+        const minutes = Math.floor((gap % hour) / minute);
+        const seconds = Math.floor((gap % minute) / second);
+
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+        document.getElementById('minutes').innerText = minutes;
+        document.getElementById('seconds').innerText = seconds;
+    };
+
+    setInterval(countdown, 1000);
+});
+
+			</script>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1>EXAM PT-2(A)</h1>
+        <div class="countdown">
+            <div class="time-section">
+                <span id="days" class="time"></span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-section">
+                <span id="hours" class="time"></span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="time-section">
+                <span id="minutes" class="time"></span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="time-section">
+                <span id="seconds" class="time"></span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
